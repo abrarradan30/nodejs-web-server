@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-web-server",
+  "version": "1.0.0",
+  "description": "Berisi :\r - Membangun Web Service menggunakan Node.js secara native.\r - Mengenal Node.js HTTP framework.\r - Membangun Web Service menggunakan Hapi.js (Node.js HTTP framework).\r - Membangun RESTful API sederhana.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

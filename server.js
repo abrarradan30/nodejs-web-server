@@ -12,17 +12,23 @@ const requestListener = (request, response) => {
         // TODO 1: logika respon bila url bernilai '/'
         if(method === 'GET') {
             response.statusCode = 200;
-            response.end('<h1>Ini adalah homepage</h1>');
+            response.end(JSON.stringify({
+                message: 'Ini adalah homepage',
+            }));
         } else {
             response.statusCode = 400;
-            response.end(`<h1>Halaman tidak dapat diakses dengan ${method} request</h1>`);
+            response.end(JSON.stringify({
+                message: `Halaman tidak dapat diakses dengan ${method} request`,
+            }));
         }
     } else if(url === '/about') {
         // TODO 2: logika respon bila url bernilai '/about'
         if(method === 'GET') {
             // respons bila client menggunakan GET
             response.statusCode = 200;
-            response.end('<h1>Halo ini adalah halaman about</h1>');
+            response.end(JSON.stringify({
+                message: 'Halo! Ini adalah halaman about',
+            }));
         } else if(method === 'POST') {
             // respons bila client menggunakan POST
             let body = [];
@@ -35,17 +41,23 @@ const requestListener = (request, response) => {
                 body = Buffer.concat(body).toString();
                 const { name } = JSON.parse(body);
                 response.statusCode = 200;
-                response.end(`<h1>Halo, ${name}! Ini adalah halaman about</h1>`);
+                response.end(JSON.stringify({
+                    message: `Halo, ${name}! Ini adalah halaman about`,
+                }));
             });
         } else {
             // respons bila client tidak menggunakan GET ataupun POST
             response.statusCode = 200;
-            response.end(`<h1>Halaman tidak dapat diakses menggunakan ${method} request</h1>`)
+            response.end(JSON.stringify({
+                message: `Halaman tidak dapat diakses menggunakan ${method}, request`,
+            }));
         }
     } else {
         // TODO 3: logika respon bila url bukan '/' atau '/about'
         response.statusCode = 404;
-        response.end('<h1>Halaman tidak ditemukan!</h1>')
+        response.end(JSON.stringify({
+            message: 'Halaman tidak ditemukan!',
+        }));
     }
 
     // if(method === 'GET'){
